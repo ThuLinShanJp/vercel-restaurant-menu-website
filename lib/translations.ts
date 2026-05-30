@@ -9,6 +9,37 @@ export const translations = {
       food: "Food",
       drinks: "Drinks",
       desserts: "Desserts",
+      seasonal: "Seasonal",
+    },
+    featured: {
+      title: "Featured",
+      viewAll: "View All",
+    },
+    menu: {
+      search: "Search menu...",
+      sort: {
+        default: "Default",
+        priceAsc: "Price: Low to High",
+        priceDesc: "Price: High to Low",
+        name: "Name A-Z",
+      },
+      noItems: "No items found",
+      taxIncluded: "Tax included",
+      taxExcluded: "excl. tax",
+    },
+    banners: {
+      summer: {
+        title: "Summer Refresh",
+        subtitle: "Cool drinks & fresh salads",
+      },
+      matcha: {
+        title: "Matcha Collection",
+        subtitle: "Premium Japanese green tea",
+      },
+      brunch: {
+        title: "Weekend Brunch",
+        subtitle: "Sat & Sun 10AM - 2PM",
+      },
     },
   },
   jp: {
@@ -19,6 +50,37 @@ export const translations = {
       food: "フード",
       drinks: "ドリンク",
       desserts: "デザート",
+      seasonal: "季節限定",
+    },
+    featured: {
+      title: "おすすめ",
+      viewAll: "すべて見る",
+    },
+    menu: {
+      search: "メニューを検索...",
+      sort: {
+        default: "デフォルト",
+        priceAsc: "価格: 安い順",
+        priceDesc: "価格: 高い順",
+        name: "名前順",
+      },
+      noItems: "アイテムが見つかりません",
+      taxIncluded: "税込",
+      taxExcluded: "税抜",
+    },
+    banners: {
+      summer: {
+        title: "夏のリフレッシュ",
+        subtitle: "冷たいドリンクとフレッシュサラダ",
+      },
+      matcha: {
+        title: "抹茶コレクション",
+        subtitle: "プレミアム日本茶",
+      },
+      brunch: {
+        title: "週末ブランチ",
+        subtitle: "土日 10時〜14時",
+      },
     },
   },
 };
@@ -28,8 +90,10 @@ export type MenuItem = {
   name: { en: string; jp: string };
   description: { en: string; jp: string };
   price: number;
+  priceExcludingTax?: number;
   image: string;
-  category: "food" | "drinks" | "desserts";
+  category: "food" | "drinks" | "desserts" | "seasonal";
+  featured?: boolean;
 };
 
 export const menuItems: MenuItem[] = [
@@ -39,11 +103,13 @@ export const menuItems: MenuItem[] = [
     name: { en: "Avocado Toast", jp: "アボカドトースト" },
     description: {
       en: "Smashed avocado on sourdough with poached egg, cherry tomatoes & microgreens",
-      jp: "サワードウにスマッシュアボカド、ポーチドエッグ、チェリートマト、マイクログリーン添え",
+      jp: "サワードウにアボカド、ポーチドエッグ、チェリートマト、マイクログリーン添え",
     },
-    price: 14,
+    price: 1540,
+    priceExcludingTax: 1400,
     image: "/images/avocado-toast.png",
     category: "food",
+    featured: true,
   },
   {
     id: "2",
@@ -52,7 +118,8 @@ export const menuItems: MenuItem[] = [
       en: "Grilled chicken with rice, edamame, avocado, pickled vegetables & sesame",
       jp: "グリルチキンとライス、枝豆、アボカド、ピクルス野菜、ごま添え",
     },
-    price: 16,
+    price: 1760,
+    priceExcludingTax: 1600,
     image: "/images/chicken-bowl.png",
     category: "food",
   },
@@ -63,9 +130,11 @@ export const menuItems: MenuItem[] = [
       en: "Fresh salmon with mixed greens, cucumber, edamame & citrus ponzu dressing",
       jp: "新鮮なサーモンとミックスグリーン、キュウリ、枝豆、柑橘ポン酢ドレッシング",
     },
-    price: 18,
+    price: 1980,
+    priceExcludingTax: 1800,
     image: "/images/salmon-salad.png",
     category: "food",
+    featured: true,
   },
   {
     id: "4",
@@ -74,7 +143,8 @@ export const menuItems: MenuItem[] = [
       en: "Assorted shrimp & vegetable tempura with house-made dipping sauce",
       jp: "エビと野菜の盛り合わせ天ぷら、自家製つけダレ付き",
     },
-    price: 15,
+    price: 1650,
+    priceExcludingTax: 1500,
     image: "/images/tempura.png",
     category: "food",
   },
@@ -85,7 +155,8 @@ export const menuItems: MenuItem[] = [
       en: "Rich pork broth with chashu, soft-boiled egg, nori & green onions",
       jp: "濃厚豚骨スープにチャーシュー、半熟卵、海苔、ネギ",
     },
-    price: 17,
+    price: 1870,
+    priceExcludingTax: 1700,
     image: "/images/ramen.png",
     category: "food",
   },
@@ -97,9 +168,11 @@ export const menuItems: MenuItem[] = [
       en: "Premium matcha with oat milk, lightly sweetened over ice",
       jp: "プレミアム抹茶とオーツミルク、ほんのり甘くアイスで",
     },
-    price: 6,
+    price: 660,
+    priceExcludingTax: 600,
     image: "/images/iced-matcha.png",
     category: "drinks",
+    featured: true,
   },
   {
     id: "7",
@@ -108,7 +181,8 @@ export const menuItems: MenuItem[] = [
       en: "Strawberries, blueberries, banana & Greek yogurt blended smooth",
       jp: "ストロベリー、ブルーベリー、バナナ、ギリシャヨーグルトのスムージー",
     },
-    price: 8,
+    price: 880,
+    priceExcludingTax: 800,
     image: "/images/fruit-smoothie.png",
     category: "drinks",
   },
@@ -119,7 +193,8 @@ export const menuItems: MenuItem[] = [
       en: "House-squeezed lemonade with fresh mint leaves & a hint of honey",
       jp: "自家製レモネードにフレッシュミントとはちみつ",
     },
-    price: 5,
+    price: 550,
+    priceExcludingTax: 500,
     image: "/images/lemonade.png",
     category: "drinks",
   },
@@ -131,9 +206,11 @@ export const menuItems: MenuItem[] = [
       en: "Japanese-style fluffy pancakes with fresh berries, cream & maple syrup",
       jp: "日本式ふわふわパンケーキ、フレッシュベリー、クリーム、メープルシロップ添え",
     },
-    price: 14,
+    price: 1540,
+    priceExcludingTax: 1400,
     image: "/images/pancakes.png",
     category: "desserts",
+    featured: true,
   },
   {
     id: "10",
@@ -142,7 +219,8 @@ export const menuItems: MenuItem[] = [
       en: "Creamy Japanese-style cheesecake with matcha & white chocolate",
       jp: "クリーミーな和風チーズケーキ、抹茶とホワイトチョコレート",
     },
-    price: 9,
+    price: 990,
+    priceExcludingTax: 900,
     image: "/images/matcha-dessert.png",
     category: "desserts",
   },
@@ -153,7 +231,8 @@ export const menuItems: MenuItem[] = [
       en: "Layered espresso-soaked ladyfingers with mascarpone cream",
       jp: "エスプレッソに浸したレディフィンガーとマスカルポーネクリームの層",
     },
-    price: 8,
+    price: 880,
+    priceExcludingTax: 800,
     image: "/images/tiramisu.png",
     category: "desserts",
   },
@@ -164,8 +243,50 @@ export const menuItems: MenuItem[] = [
       en: "Traditional sweet red bean pancakes served with matcha ice cream",
       jp: "伝統的なあんこパンケーキ、抹茶アイス添え",
     },
-    price: 7,
+    price: 770,
+    priceExcludingTax: 700,
     image: "/images/dorayaki.png",
     category: "desserts",
+  },
+  // Seasonal
+  {
+    id: "13",
+    name: { en: "Sakura Mochi Set", jp: "桜餅セット" },
+    description: {
+      en: "Spring cherry blossom mochi with sakura tea, limited time only",
+      jp: "春の桜餅と桜茶のセット、期間限定",
+    },
+    price: 1100,
+    priceExcludingTax: 1000,
+    image: "/images/seasonal-sakura.png",
+    category: "seasonal",
+    featured: true,
+  },
+  {
+    id: "14",
+    name: { en: "Yuzu Citrus Soda", jp: "柚子シトラスソーダ" },
+    description: {
+      en: "Refreshing sparkling drink with fresh yuzu juice and honey",
+      jp: "フレッシュ柚子ジュースとはちみつのスパークリングドリンク",
+    },
+    price: 660,
+    priceExcludingTax: 600,
+    image: "/images/seasonal-yuzu.png",
+    category: "seasonal",
+  },
+];
+
+export const banners = [
+  {
+    id: "summer",
+    image: "/images/banner-summer.png",
+  },
+  {
+    id: "matcha",
+    image: "/images/banner-matcha.png",
+  },
+  {
+    id: "brunch",
+    image: "/images/banner-brunch.png",
   },
 ];
