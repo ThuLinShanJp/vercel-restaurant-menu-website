@@ -1,49 +1,34 @@
-import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { Noto_Serif_JP } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Nunito } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const geist = Geist({ 
+const nunito = Nunito({
   subsets: ["latin"],
-  variable: "--font-geist",
-});
-
-const notoSerifJP = Noto_Serif_JP({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-noto-serif-jp",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-nunito",
 });
 
 export const metadata: Metadata = {
-  title: "Sakura | Japanese Cuisine",
+  title: "Leaf & Bean | Cafe Menu",
   description:
-    "Experience authentic Japanese cuisine at Sakura. From fresh sushi and sashimi to traditional ramen and wagyu beef, discover the art of Japanese cooking.",
+    "Fresh, healthy, and delicious. Explore our menu of bowls, salads, drinks, and desserts. Perfect for a quick scan from your table.",
   keywords: [
-    "Japanese restaurant",
-    "sushi",
-    "ramen",
-    "Japanese cuisine",
-    "omakase",
-    "wagyu",
+    "cafe",
+    "restaurant",
+    "menu",
+    "healthy food",
+    "drinks",
+    "desserts",
   ],
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#f5faf7",
 };
 
 export default function RootLayout({
@@ -52,10 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-background scroll-smooth">
-      <body
-        className={`${geist.variable} ${notoSerifJP.variable} font-sans antialiased`}
-      >
+    <html lang="en" className="bg-background">
+      <body className={`${nunito.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>

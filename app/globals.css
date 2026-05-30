@@ -4,32 +4,32 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Japanese-inspired color palette - warm, zen, minimalist */
-  --background: oklch(0.98 0.005 80);
-  --foreground: oklch(0.15 0.01 60);
+  /* Green and blue friendly cafe palette */
+  --background: oklch(0.98 0.01 145);
+  --foreground: oklch(0.20 0.02 200);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.01 60);
+  --card-foreground: oklch(0.20 0.02 200);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.01 60);
-  --primary: oklch(0.25 0.02 50);
-  --primary-foreground: oklch(0.98 0.005 80);
-  --secondary: oklch(0.94 0.01 80);
-  --secondary-foreground: oklch(0.25 0.02 50);
-  --muted: oklch(0.94 0.01 80);
-  --muted-foreground: oklch(0.45 0.01 60);
-  --accent: oklch(0.55 0.12 30);
-  --accent-foreground: oklch(0.98 0.005 80);
+  --popover-foreground: oklch(0.20 0.02 200);
+  --primary: oklch(0.55 0.15 160);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.92 0.03 200);
+  --secondary-foreground: oklch(0.20 0.02 200);
+  --muted: oklch(0.94 0.02 160);
+  --muted-foreground: oklch(0.45 0.03 200);
+  --accent: oklch(0.60 0.12 220);
+  --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.88 0.01 80);
-  --input: oklch(0.88 0.01 80);
-  --ring: oklch(0.55 0.12 30);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.5rem;
+  --border: oklch(0.90 0.02 160);
+  --input: oklch(0.90 0.02 160);
+  --ring: oklch(0.55 0.15 160);
+  --chart-1: oklch(0.55 0.15 160);
+  --chart-2: oklch(0.60 0.12 220);
+  --chart-3: oklch(0.65 0.10 180);
+  --chart-4: oklch(0.70 0.12 140);
+  --chart-5: oklch(0.50 0.14 200);
+  --radius: 1rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -41,30 +41,30 @@
 }
 
 .dark {
-  --background: oklch(0.12 0.01 60);
-  --foreground: oklch(0.95 0.005 80);
-  --card: oklch(0.16 0.01 60);
-  --card-foreground: oklch(0.95 0.005 80);
-  --popover: oklch(0.16 0.01 60);
-  --popover-foreground: oklch(0.95 0.005 80);
-  --primary: oklch(0.95 0.005 80);
-  --primary-foreground: oklch(0.12 0.01 60);
-  --secondary: oklch(0.22 0.01 60);
-  --secondary-foreground: oklch(0.95 0.005 80);
-  --muted: oklch(0.22 0.01 60);
-  --muted-foreground: oklch(0.65 0.01 60);
-  --accent: oklch(0.55 0.12 30);
-  --accent-foreground: oklch(0.95 0.005 80);
+  --background: oklch(0.15 0.02 200);
+  --foreground: oklch(0.95 0.01 145);
+  --card: oklch(0.20 0.02 200);
+  --card-foreground: oklch(0.95 0.01 145);
+  --popover: oklch(0.20 0.02 200);
+  --popover-foreground: oklch(0.95 0.01 145);
+  --primary: oklch(0.60 0.15 160);
+  --primary-foreground: oklch(0.15 0.02 200);
+  --secondary: oklch(0.25 0.02 200);
+  --secondary-foreground: oklch(0.95 0.01 145);
+  --muted: oklch(0.25 0.02 200);
+  --muted-foreground: oklch(0.65 0.02 200);
+  --accent: oklch(0.55 0.12 220);
+  --accent-foreground: oklch(0.95 0.01 145);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.25 0.01 60);
-  --input: oklch(0.25 0.01 60);
-  --ring: oklch(0.55 0.12 30);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  --border: oklch(0.30 0.02 200);
+  --input: oklch(0.30 0.02 200);
+  --ring: oklch(0.60 0.15 160);
+  --chart-1: oklch(0.60 0.15 160);
+  --chart-2: oklch(0.55 0.12 220);
+  --chart-3: oklch(0.60 0.10 180);
+  --chart-4: oklch(0.65 0.12 140);
+  --chart-5: oklch(0.55 0.14 200);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -76,8 +76,7 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-geist), 'Geist Fallback', sans-serif;
-  --font-serif: var(--font-noto-serif-jp), 'Noto Serif JP', serif;
+  --font-sans: var(--font-nunito), 'Nunito', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -126,20 +125,12 @@
   }
 }
 
-/* Custom scrollbar for zen aesthetic */
-::-webkit-scrollbar {
-  width: 8px;
+/* Hide scrollbar for category tabs */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--foreground);
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
