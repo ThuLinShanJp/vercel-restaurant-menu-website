@@ -1,25 +1,25 @@
 "use client";
 
-import { useLanguage } from "./language-context";
-import { translations } from "@/lib/translations";
-
-type Category = "food" | "drinks" | "desserts" | "seasonal";
+import { useLocale } from "./language-context";
+import { getLocalizedText } from "@/lib/locale";
+import type { Category } from "@/types";
 
 interface CategoryTabsProps {
-  activeCategory: Category;
-  onCategoryChange: (category: Category) => void;
+  categories: Category[];
+  activeCategory: string;
+  onCategoryChange: (categoryId: string) => void;
 }
 
-export function CategoryTabs({ activeCategory, onCategoryChange }: CategoryTabsProps) {
-  const { language } = useLanguage();
-  const t = translations[language];
+export function CategoryTabs({
+  categories,
+  activeCategory,
+  onCategoryChange,
+}: CategoryTabsProps) {
+  const { locale } = useLocale();
 
-  const categories: { key: Category; label: string }[] = [
-    { key: "food", label: t.categories.food },
-    { key: "drinks", label: t.categories.drinks },
-    { key: "desserts", label: t.categories.desserts },
-    { key: "seasonal", label: t.categories.seasonal },
-  ];
+  if (categories.length === 0) {
+    return null;
+  }
 
   return (
     <div className="sticky top-[57px] z-40 bg-background border-b border-border">
@@ -27,15 +27,15 @@ export function CategoryTabs({ activeCategory, onCategoryChange }: CategoryTabsP
         <div className="flex gap-2 overflow-x-auto hide-scrollbar">
           {categories.map((category) => (
             <button
-              key={category.key}
-              onClick={() => onCategoryChange(category.key)}
+              key={category.id}
+              onClick={() => onCategoryChange(category.id)}
               className={`px-4 py-2 text-sm font-semibold rounded-full whitespace-nowrap transition-all ${
-                activeCategory === category.key
+                activeCategory === category.id
                   ? "bg-primary text-primary-foreground shadow-md"
                   : "bg-card text-foreground border border-border hover:bg-secondary"
               }`}
             >
-              {category.label}
+              {getLocalizedText(category.title, locale)}
             </button>
           ))}
         </div>

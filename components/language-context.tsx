@@ -1,31 +1,35 @@
 "use client";
 
 import { createContext, useContext, useState, type ReactNode } from "react";
-import { type Language } from "@/lib/translations";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/locale";
 
-type LanguageContextType = {
-  language: Language;
-  setLanguage: (lang: Language) => void;
+type LocaleContextType = {
+  locale: Locale;
+  setLocale: (locale: Locale) => void;
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
-);
+const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en");
+  const [locale, setLocale] = useState<Locale>(DEFAULT_LOCALE);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
+    <LocaleContext.Provider value={{ locale, setLocale }}>
       {children}
-    </LanguageContext.Provider>
+    </LocaleContext.Provider>
   );
 }
 
-export function useLanguage() {
-  const context = useContext(LanguageContext);
+export function useLocale() {
+  const context = useContext(LocaleContext);
   if (context === undefined) {
-    throw new Error("useLanguage must be used within a LanguageProvider");
+    throw new Error("useLocale must be used within a LanguageProvider");
   }
   return context;
+}
+
+/** @deprecated Use `useLocale` */
+export function useLanguage() {
+  const { locale, setLocale } = useLocale();
+  return { language: locale, setLanguage: setLocale };
 }

@@ -1,4 +1,7 @@
-export type Language = "en" | "jp";
+import type { Locale } from "@/lib/locale";
+
+/** @deprecated Use `Locale` from `@/lib/locale` */
+export type Language = Locale;
 
 export const translations = {
   en: {
@@ -16,6 +19,7 @@ export const translations = {
       viewAll: "View All",
     },
     menu: {
+      soldOut: "Sold out today",
       search: "Search menu...",
       sort: {
         default: "Default",
@@ -42,7 +46,7 @@ export const translations = {
       },
     },
   },
-  jp: {
+  ja: {
     header: {
       name: "リーフ＆ビーン",
     },
@@ -57,6 +61,7 @@ export const translations = {
       viewAll: "すべて見る",
     },
     menu: {
+      soldOut: "本日売り切れ",
       search: "メニューを検索...",
       sort: {
         default: "デフォルト",
@@ -87,8 +92,8 @@ export const translations = {
 
 export type MenuItem = {
   id: string;
-  name: { en: string; jp: string };
-  description: { en: string; jp: string };
+  name: { en: string; ja: string };
+  description: { en: string; ja: string };
   price: number;
   priceExcludingTax?: number;
   image: string;
@@ -100,10 +105,10 @@ export const menuItems: MenuItem[] = [
   // Food
   {
     id: "1",
-    name: { en: "Avocado Toast", jp: "アボカドトースト" },
+    name: { en: "Avocado Toast", ja: "アボカドトースト" },
     description: {
       en: "Smashed avocado on sourdough with poached egg, cherry tomatoes & microgreens",
-      jp: "サワードウにアボカド、ポーチドエッグ、チェリートマト、マイクログリーン添え",
+      ja: "サワードウにアボカド、ポーチドエッグ、チェリートマト、マイクログリーン添え",
     },
     price: 1540,
     priceExcludingTax: 1400,
@@ -113,10 +118,10 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "2",
-    name: { en: "Teriyaki Chicken Bowl", jp: "照り焼きチキンボウル" },
+    name: { en: "Teriyaki Chicken Bowl", ja: "照り焼きチキンボウル" },
     description: {
       en: "Grilled chicken with rice, edamame, avocado, pickled vegetables & sesame",
-      jp: "グリルチキンとライス、枝豆、アボカド、ピクルス野菜、ごま添え",
+      ja: "グリルチキンとライス、枝豆、アボカド、ピクルス野菜、ごま添え",
     },
     price: 1760,
     priceExcludingTax: 1600,
@@ -125,10 +130,10 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "3",
-    name: { en: "Salmon Poke Salad", jp: "サーモンポケサラダ" },
+    name: { en: "Salmon Poke Salad", ja: "サーモンポケサラダ" },
     description: {
       en: "Fresh salmon with mixed greens, cucumber, edamame & citrus ponzu dressing",
-      jp: "新鮮なサーモンとミックスグリーン、キュウリ、枝豆、柑橘ポン酢ドレッシング",
+      ja: "新鮮なサーモンとミックスグリーン、キュウリ、枝豆、柑橘ポン酢ドレッシング",
     },
     price: 1980,
     priceExcludingTax: 1800,
@@ -138,10 +143,10 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "4",
-    name: { en: "Crispy Tempura", jp: "サクサク天ぷら" },
+    name: { en: "Crispy Tempura", ja: "サクサク天ぷら" },
     description: {
       en: "Assorted shrimp & vegetable tempura with house-made dipping sauce",
-      jp: "エビと野菜の盛り合わせ天ぷら、自家製つけダレ付き",
+      ja: "エビと野菜の盛り合わせ天ぷら、自家製つけダレ付き",
     },
     price: 1650,
     priceExcludingTax: 1500,
@@ -150,10 +155,10 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "5",
-    name: { en: "Tonkotsu Ramen", jp: "豚骨ラーメン" },
+    name: { en: "Tonkotsu Ramen", ja: "豚骨ラーメン" },
     description: {
       en: "Rich pork broth with chashu, soft-boiled egg, nori & green onions",
-      jp: "濃厚豚骨スープにチャーシュー、半熟卵、海苔、ネギ",
+      ja: "濃厚豚骨スープにチャーシュー、半熟卵、海苔、ネギ",
     },
     price: 1870,
     priceExcludingTax: 1700,
@@ -163,10 +168,10 @@ export const menuItems: MenuItem[] = [
   // Drinks
   {
     id: "6",
-    name: { en: "Iced Matcha Latte", jp: "アイス抹茶ラテ" },
+    name: { en: "Iced Matcha Latte", ja: "アイス抹茶ラテ" },
     description: {
       en: "Premium matcha with oat milk, lightly sweetened over ice",
-      jp: "プレミアム抹茶とオーツミルク、ほんのり甘くアイスで",
+      ja: "プレミアム抹茶とオーツミルク、ほんのり甘くアイスで",
     },
     price: 660,
     priceExcludingTax: 600,
@@ -176,10 +181,10 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "7",
-    name: { en: "Berry Blast Smoothie", jp: "ベリーブラストスムージー" },
+    name: { en: "Berry Blast Smoothie", ja: "ベリーブラストスムージー" },
     description: {
       en: "Strawberries, blueberries, banana & Greek yogurt blended smooth",
-      jp: "ストロベリー、ブルーベリー、バナナ、ギリシャヨーグルトのスムージー",
+      ja: "ストロベリー、ブルーベリー、バナナ、ギリシャヨーグルトのスムージー",
     },
     price: 880,
     priceExcludingTax: 800,
@@ -188,10 +193,10 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "8",
-    name: { en: "Fresh Mint Lemonade", jp: "フレッシュミントレモネード" },
+    name: { en: "Fresh Mint Lemonade", ja: "フレッシュミントレモネード" },
     description: {
       en: "House-squeezed lemonade with fresh mint leaves & a hint of honey",
-      jp: "自家製レモネードにフレッシュミントとはちみつ",
+      ja: "自家製レモネードにフレッシュミントとはちみつ",
     },
     price: 550,
     priceExcludingTax: 500,
@@ -201,10 +206,10 @@ export const menuItems: MenuItem[] = [
   // Desserts
   {
     id: "9",
-    name: { en: "Fluffy Soufflé Pancakes", jp: "ふわふわスフレパンケーキ" },
+    name: { en: "Fluffy Soufflé Pancakes", ja: "ふわふわスフレパンケーキ" },
     description: {
       en: "Japanese-style fluffy pancakes with fresh berries, cream & maple syrup",
-      jp: "日本式ふわふわパンケーキ、フレッシュベリー、クリーム、メープルシロップ添え",
+      ja: "日本式ふわふわパンケーキ、フレッシュベリー、クリーム、メープルシロップ添え",
     },
     price: 1540,
     priceExcludingTax: 1400,
@@ -214,10 +219,10 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "10",
-    name: { en: "Matcha Cheesecake", jp: "抹茶チーズケーキ" },
+    name: { en: "Matcha Cheesecake", ja: "抹茶チーズケーキ" },
     description: {
       en: "Creamy Japanese-style cheesecake with matcha & white chocolate",
-      jp: "クリーミーな和風チーズケーキ、抹茶とホワイトチョコレート",
+      ja: "クリーミーな和風チーズケーキ、抹茶とホワイトチョコレート",
     },
     price: 990,
     priceExcludingTax: 900,
@@ -226,10 +231,10 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "11",
-    name: { en: "Classic Tiramisu", jp: "クラシックティラミス" },
+    name: { en: "Classic Tiramisu", ja: "クラシックティラミス" },
     description: {
       en: "Layered espresso-soaked ladyfingers with mascarpone cream",
-      jp: "エスプレッソに浸したレディフィンガーとマスカルポーネクリームの層",
+      ja: "エスプレッソに浸したレディフィンガーとマスカルポーネクリームの層",
     },
     price: 880,
     priceExcludingTax: 800,
@@ -238,10 +243,10 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "12",
-    name: { en: "Dorayaki", jp: "どら焼き" },
+    name: { en: "Dorayaki", ja: "どら焼き" },
     description: {
       en: "Traditional sweet red bean pancakes served with matcha ice cream",
-      jp: "伝統的なあんこパンケーキ、抹茶アイス添え",
+      ja: "伝統的なあんこパンケーキ、抹茶アイス添え",
     },
     price: 770,
     priceExcludingTax: 700,
@@ -251,10 +256,10 @@ export const menuItems: MenuItem[] = [
   // Seasonal
   {
     id: "13",
-    name: { en: "Sakura Mochi Set", jp: "桜餅セット" },
+    name: { en: "Sakura Mochi Set", ja: "桜餅セット" },
     description: {
       en: "Spring cherry blossom mochi with sakura tea, limited time only",
-      jp: "春の桜餅と桜茶のセット、期間限定",
+      ja: "春の桜餅と桜茶のセット、期間限定",
     },
     price: 1100,
     priceExcludingTax: 1000,
@@ -264,10 +269,10 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "14",
-    name: { en: "Yuzu Citrus Soda", jp: "柚子シトラスソーダ" },
+    name: { en: "Yuzu Citrus Soda", ja: "柚子シトラスソーダ" },
     description: {
       en: "Refreshing sparkling drink with fresh yuzu juice and honey",
-      jp: "フレッシュ柚子ジュースとはちみつのスパークリングドリンク",
+      ja: "フレッシュ柚子ジュースとはちみつのスパークリングドリンク",
     },
     price: 660,
     priceExcludingTax: 600,
