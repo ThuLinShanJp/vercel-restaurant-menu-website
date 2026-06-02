@@ -1,0 +1,288 @@
+[
+  {
+    "fields": [
+      {
+        "name": "en",
+        "type": "string",
+        "title": "English"
+      },
+      {
+        "name": "ja",
+        "type": "string",
+        "title": "Japanese"
+      }
+    ],
+    "name": "localizedString",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "initialValue": 0,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 0
+              }
+            ]
+          }
+        ],
+        "description": "Display order in category tabs (lower numbers appear first).",
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "category",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "name",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "to": [
+          {
+            "type": "category"
+          }
+        ],
+        "name": "category",
+        "type": "reference"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 0
+              }
+            ]
+          }
+        ],
+        "description": "Price in JPY (tax included).",
+        "name": "taxIncludedPrice",
+        "type": "number",
+        "title": "Tax-included price"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 0
+              }
+            ]
+          }
+        ],
+        "description": "Price in JPY (tax excluded).",
+        "name": "taxExcludedPrice",
+        "type": "number",
+        "title": "Tax-excluded price"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean"
+      },
+      {
+        "initialValue": false,
+        "name": "soldOutToday",
+        "type": "boolean",
+        "title": "Sold out today"
+      },
+      {
+        "initialValue": true,
+        "name": "available",
+        "type": "boolean"
+      },
+      {
+        "initialValue": 0,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 0
+              }
+            ]
+          }
+        ],
+        "description": "Sort order within a category (lower numbers appear first).",
+        "name": "displayOrder",
+        "type": "number",
+        "title": "Display order"
+      }
+    ],
+    "name": "menuItem",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "initialValue": true,
+        "description": "Only active banners are shown on the menu.",
+        "name": "active",
+        "type": "boolean"
+      },
+      {
+        "initialValue": 0,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "description": "Higher priority banners appear first in the carousel.",
+        "name": "priority",
+        "type": "number"
+      },
+      {
+        "description": "Optional. Banner is eligible from this date/time.",
+        "name": "startDate",
+        "type": "datetime",
+        "title": "Start date"
+      },
+      {
+        "description": "Optional. Banner is eligible until this date/time.",
+        "name": "endDate",
+        "type": "datetime",
+        "title": "End date"
+      }
+    ],
+    "name": "promotionBanner",
+    "type": "document"
+  }
+]
